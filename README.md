@@ -4,7 +4,7 @@
 - [Firebase](https://www.firebase.com/) \w [REST API Client](https://packagist.org/packages/ktamas77/firebase-php)
 - RESTful API
 
-![](http://new.tinygrab.com/7020c0e8b027c8091266a2df7b4d2b5c9a8964f590.png)
+![](https://s31.postimg.org/fi5faenzf/Untitled_Diagram.png)
 *[exported XML for draw.io's UML diagram](http://pastebin.com/raw/amuqNyb8)*
 
 ## Setup
