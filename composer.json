@@ -1,8 +1,13 @@
 {
+    "config": {
+        "process-timeout": 99999
+    },
     "require": {
-        "slim/slim": "^2.6"
+        "slim/slim": "^2.6",
+        "ktamas77/firebase-php": "^2.2",
+        "firebase/token-generator": "^3.0"
     },
     "scripts": {
-	"server": "php -S 0.0.0.0:8080 -t src/"
+       "server": "php -S 0.0.0.0:8080 -t src/"
     }
 }
