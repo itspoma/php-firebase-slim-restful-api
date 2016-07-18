@@ -7,10 +7,13 @@
 ![](https://s31.postimg.org/fi5faenzf/Untitled_Diagram.png)
 *[exported XML for draw.io's UML diagram](http://pastebin.com/raw/amuqNyb8)*
 
-## Setup
+## Setup & Run
 
 ```
 $ composer install
+
+$ composer run-script server
+$ open http://localhost:8080/
 ```
 
 ## Sample Firebase data

@@ -1,5 +1,5 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 var_dump(1);
