@@ -4,10 +4,17 @@
     },
     "require": {
         "slim/slim": "^2.6",
-        "ktamas77/firebase-php": "^2.2",
-        "firebase/token-generator": "^3.0"
+        "ktamas77/firebase-php": "^2.2"
     },
     "scripts": {
        "server": "php -S 0.0.0.0:8080 -t src/"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "psr-0": {
+            "App": "src/"
+        }
     }
 }
