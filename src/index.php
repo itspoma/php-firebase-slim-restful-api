@@ -1,16 +1,5 @@
 <?php
-
 require '../vendor/autoload.php';
-
-new \App\controllers\v1\ApiV1UsersController;
-
-// $secret = 'YWEoXhUGyP66iDouHqh8Wo8YtyYStpWghJwmhNyh';
-// const DEFAULT_URL = 'https://php-firebase-slim-restfu-d0133.firebaseio.com/';
-
-// $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, $secret);
-// $name = $firebase->get('/users');
-
-// var_dump(11,$name);die;
 
 \Slim\Slim::registerAutoloader();
 
@@ -18,68 +7,73 @@ new \App\controllers\v1\ApiV1UsersController;
   'id' => '[0-9]{1,}',
 ));
 
+// 
+$config = array();
+
+require_once 'config/default.php';
+require_once 'config/development.php';
+
+// 
 $app = new \Slim\Slim();
 
-$app->get('/api/v1/users', '\App\controllers\v1\ApiV1UsersController:list');
-
-// $app->get('/users', 'getWines');
-// $app->get('/users/{id}', 'getWines');
-// // $app->post('/wines', 'getWines');
-// // $app->put('/wines', 'getWines');
-// // $app->delete('/wines', 'getWines');
-
-// $app->get('/articles/:id', function ($id) use ($app) {    
-//   // callback code
-// })->conditions(array('id' => '([0-9]{1,}'));
-
-
-// $app->group('/users/{id:[0-9]+}', function () {
-//     $this->map(['GET', 'DELETE', 'PATCH', 'PUT'], '', function ($request, $response, $args) {
-//         // Find, delete, patch or replace user identified by $args['id']
-//     })->setName('user');
-//     $this->get('/reset-password', function ($request, $response, $args) {
-//         // Route for /users/{id:[0-9]+}/reset-password
-//         // Reset the password for user identified by $args['id']
-//     })->setName('user-password-reset');
-// });
-
-
-//   // send response header for JSON content type
-//   $app->response()->header('Content-Type', 'application/json');
-
-//   // return JSON-encoded response body with query results
-//   echo json_encode(R::exportAll($articles));
-
-  // try {
-  //   // query database for single article
-  //   $article = R::findOne('articles', 'id=?', array($id));
-     
-  //   if ($article) {
-  //     // if found, return JSON response
-  //     $app->response()->header('Content-Type', 'application/json');
-  //     echo json_encode(R::exportAll($article));
-  //   } else {
-  //     // else throw exception
-  //     throw new ResourceNotFoundException();
-  //   }
-  // } catch (ResourceNotFoundException $e) {
-  //   // return 404 server error
-  //   $app->response()->status(404);
-  // } catch (Exception $e) {
-  //   $app->response()->status(400);
-  //   $app->response()->header('X-Status-Reason', $e->getMessage());
-  // }
-
-
-
-function getWines() {
-  var_dump(1);die;
+foreach ($config as $key => $value) {
+  $app->config($key, $value);
 }
 
-// $app->get('/api/v1/diag', function () use ($app) {
-//   echo '1';die;
-// });
+// 
+$app->group('/api/v1', function () use ($app) {
+
+  // users
+  $app->group('/users', function () use ($app) {
+    $_class = '\App\controllers\v1\ApiUsersController';
+
+    // list
+    $app->get('/', $_class.':query');
+    $app->post('/', $_class.':create');
+
+    // item
+    $app->get('/:id', $_class.':retrieve');
+    $app->put('/:id', $_class.':update');
+    $app->delete('/:id', $_class.':remove');
+  });
+
+  // orders
+  $app->group('/orders', function () use ($app) {
+    $_class = '\App\controllers\v1\ApiOrdersController';
+
+    // list
+    $app->get('/', $_class.':query');
+    $app->post('/', $_class.':query');
+
+    // item
+    $app->get('/:id', $_class.':retrieve');
+    $app->get('/:id', $_class.':create');
+    $app->put('/:id', $_class.':update');
+    $app->delete('/:id', $_class.':remove');
+  });
+
+});
+
+// fallback on error event
+$app->error(function (\Exception $e) use ($app) {
+  $app->response->headers->set('Content-Type', 'application/json');
+
+  echo json_encode(array(
+    'code' => $e->getCode(),
+    'message' => $e->getMessage(),
+    'file' => $e->getFile(),
+    'line' => $e->getLine(),
+  ));
+});
+
+// fallback on not-found event
+$app->notFound(function () use ($app) {
+  $app->response->headers->set('Content-Type', 'application/json');
+
+  echo json_encode(array(
+    'code' => 404,
+    'message' => 'Not found'
+  ));
+});
 
 $app->run();
-
-// var_dump($app);

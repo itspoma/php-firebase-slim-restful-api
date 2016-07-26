@@ -10,11 +10,8 @@
        "server": "php -S 0.0.0.0:8080 -t src/"
     },
     "autoload": {
-        "classmap": [
-            "src/"
-        ],
-        "psr-0": {
-            "App": "src/"
+        "psr-4": {
+            "App\\": "src/"
         }
     }
 }
