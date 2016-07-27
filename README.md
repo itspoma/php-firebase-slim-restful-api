@@ -12,6 +12,8 @@
 ```
 $ composer install
 
+$ cp src/config/development.sample.php src/config/development.php
+
 $ composer run-script server
 $ open http://localhost:8080/
 ```

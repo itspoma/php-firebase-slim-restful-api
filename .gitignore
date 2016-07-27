@@ -1,4 +1,4 @@
 composer.lock
 vendor/
 
-config/development.php
+src/config/development.php

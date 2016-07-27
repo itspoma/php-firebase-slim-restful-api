@@ -1,7 +1,8 @@
 <?php
 namespace App\controllers\v1;
 
-use \App\services\Firebase as Firebase;
+// use \App\services\Firebase as Firebase;
+use \App\services\FirebaseUsersModel as UsersModel;
 
 class ApiBaseController {
 
@@ -10,8 +11,7 @@ class ApiBaseController {
    * @return
    */
   static public function query() {
-    echo 'query ' . static::KEY;
-    die;
+    echo UsersModel::getInstance()->get('/')->getRaw();
   }
 
   /**
