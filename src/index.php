@@ -14,10 +14,8 @@ require_once 'config/default.php';
 require_once 'config/development.php';
 
 // 
-// $container = new \Slim\Container;
 $app = new \Slim\Slim();
-// $app = new \Slim\App($container);
-
+$app->add(new \CorsSlim\CorsSlim());
 
 foreach ($config as $key => $value) {
   $app->config($key, $value);
