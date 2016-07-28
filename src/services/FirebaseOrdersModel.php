@@ -6,5 +6,5 @@ namespace App\services;
  * 
  */
 class FirebaseOrdersModel extends FirebaseBaseModel {
-  private $KEY = 'orders';
+  private $PATH = 'orders';
 }

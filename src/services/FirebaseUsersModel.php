@@ -6,5 +6,5 @@ namespace App\services;
  * 
  */
 class FirebaseUsersModel extends FirebaseBaseModel {
-  public $KEY = 'users';
+  public $PATH = 'users';
 }

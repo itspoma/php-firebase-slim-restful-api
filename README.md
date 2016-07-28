@@ -77,6 +77,13 @@ All data (just copy/paste to Firebase):
     "lastName": "Solidpunch",
     "email": "jozeffa@gmail.com",
     "phone": "119879888"
+  },
+  "25": {  
+    "userId": "25",
+    "firstName": "Jozeffa25",
+    "lastName": "Solidpunch25",
+    "email": "jozeffa25@gmail.com",
+    "phone": "252525"
   }
 }
 ```

@@ -9,7 +9,6 @@ require '../vendor/autoload.php';
 
 // 
 $config = array();
-
 require_once 'config/default.php';
 require_once 'config/development.php';
 
@@ -35,7 +34,7 @@ $app->group('/api/v1', function () use ($app) {
     // item
     $app->get('/:id', $_class.':retrieve');
     $app->put('/:id', $_class.':update');
-    $app->delete('/:id', $_class.':remove');
+    $app->delete('/:id', $_class.':delete');
   });
 
   // orders
@@ -50,7 +49,7 @@ $app->group('/api/v1', function () use ($app) {
     $app->get('/:id', $_class.':retrieve');
     $app->get('/:id', $_class.':create');
     $app->put('/:id', $_class.':update');
-    $app->delete('/:id', $_class.':remove');
+    $app->delete('/:id', $_class.':delete');
   });
 
 });
