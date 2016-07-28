@@ -18,6 +18,18 @@ $ composer run-script server
 $ open http://localhost:8080/
 ```
 
+## App workflow
+- ```GET /api/v1/users``` will retreive the list of all users
+- ```POST /api/v1/users``` will store a new user with specific data
+- ```GET /api/v1/users/1``` will retreive a user with passed id
+- ```PUT /api/v1/users/1``` will update (merge) user data with data that has been passed
+- ```DELETE /api/v1/users/1``` will remove user
+- ```GET /api/v1/orders``` will retreive the list of all orders
+- ```POST /api/v1/orders``` will store a new order with specific data
+- ```GET /api/v1/orders/1``` will retreive a order with passed id
+- ```PUT /api/v1/orders/1``` will update (merge) order data with data that has been passed
+- ```DELETE /api/v1/orders/1``` will remove order
+
 ## Sample Firebase data
 
 All data represented below available by these links:
